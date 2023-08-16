@@ -119,9 +119,8 @@ li {
     <main>
         <section class="payment-section">
             <h2>Make a Payment</h2>
-            <input type="text" id="recipient" placeholder="Recipient">
+            <input type="text" id="receiver-upi-id" placeholder="Receiver's UPI ID">
             <input type="number" id="amount" placeholder="Amount">
-            <input type="text" id="upi-id" placeholder="UPI ID">
             <button id="pay-button">Pay</button>
         </section>
         <section class="transaction-history">
@@ -131,22 +130,21 @@ li {
     </main>
     <script>
         document.getElementById('pay-button').addEventListener('click', () => {
-            const recipient = document.getElementById('recipient').value;
+            const receiverUpiId = document.getElementById('receiver-upi-id').value;
             const amount = parseFloat(document.getElementById('amount').value);
-            const upiId = document.getElementById('upi-id').value;
 
-            if (recipient && amount && upiId) {
+            if (receiverUpiId && amount) {
                 // Open PhonePe app with deep link (simulated URL)
-                openPhonePeApp(recipient, amount, upiId);
+                openPhonePeApp(receiverUpiId, amount);
             } else {
-                console.error('Recipient, amount, and UPI ID are required.');
+                console.error("Receiver's UPI ID and amount are required.");
             }
         });
 
-        function openPhonePeApp(recipient, amount, upiId) {
+        function openPhonePeApp(receiverUpiId, amount) {
             // Simulate opening the PhonePe app with a deep link
             // Replace this with the actual deep link format used by PhonePe
-            const phonePeDeepLink = `phonepe://pay?recipient=${recipient}&amount=${amount}&upiId=${upiId}`;
+            const phonePeDeepLink = `phonepe://pay?receiver=${receiverUpiId}&amount=${amount}`;
             window.location.href = phonePeDeepLink;
         }
     </script>
