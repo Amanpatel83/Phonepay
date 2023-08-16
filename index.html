@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhonePay Clone</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #2196F3;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.payment-section {
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.payment-section h2 {
+    margin-top: 0;
+}
+
+input[type="text"],
+input[type="number"],
+button {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+}
+
+button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.transaction-history {
+    border: 1px solid #ccc;
+    padding: 1em;
+}
+
+.transaction-history h2 {
+    margin-top: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PhonePay</h1>
+    </header>
+    <main>
+        <section class="payment-section">
+            <h2>Make a Payment</h2>
+            <input type="text" id="recipient" placeholder="Recipient">
+            <input type="number" id="amount" placeholder="Amount">
+            <button id="pay-button">Pay</button>
+        </section>
+        <section class="transaction-history">
+            <h2>Transaction History</h2>
+            <ul id="transaction-list"></ul>
+        </section>
+    </main>
+    <script>
+        document.getElementById('pay-button').addEventListener('click', () => {
+            const recipient = document.getElementById('recipient').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+
+            if (recipient && amount) {
+                // Redirect to PhonePe website (simulated URL)
+                redirectToPhonePe(recipient, amount);
+            } else {
+                console.error('Recipient and amount are required.');
+            }
+        });
+
+        function redirectToPhonePe(recipient, amount) {
+            // Simulate redirection to PhonePe website
+            const phonePeURL = `https://www.phonepe.com/send-money?recipient=${recipient}&amount=${amount}`;
+            window.location.href = phonePeURL;
+        }
+    </script>
+</body>
+</html>
